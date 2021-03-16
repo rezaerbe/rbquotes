@@ -16,7 +16,7 @@ import org.junit.runner.RunWith
  * Testing the CRUD operations for DAO operations
  */
 @RunWith(AndroidJUnit4::class)
-open class QuoteDaoTest : DatabaseTest() {
+open class QuoteTest : DatabaseTest() {
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -45,15 +45,14 @@ open class QuoteDaoTest : DatabaseTest() {
 
     @Test
     fun updateQuoteTest() = runBlocking {
-        var quote =
+        val quote =
             Quote(id = 1, text = "Hello World", author = "Ray Wenderlich", date = "27/12/1998")
         appDatabase.quotesDao().insertQuote(quote)
         quote.author = "Enzo Lizama"
         appDatabase.quotesDao().updateQuote(quote)
         assertEquals(
-          appDatabase.quotesDao().getQuotes().first().first().author, "Enzo " +
-                  "Lizama"
+            appDatabase.quotesDao().getQuotes().first().first().author, "Enzo " +
+                    "Lizama"
         )
     }
-
 }

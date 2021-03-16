@@ -37,6 +37,7 @@ class RWQuoteMigrationTest {
         FrameworkSQLiteOpenHelperFactory()
     )
 
+
     @Test
     fun migrate1to2() {
         database = migrationTestHelper.createDatabase(TEST_DB, 1).apply {
